@@ -311,6 +311,7 @@ clone_git_repo() {
   then
     log_error "Failed to clone git@github.com:${FACTER_init_repouser}/${FACTER_init_reponame}.git"
   fi
+  chmod -R 700 ${FACTER_init_repodir}
 }
 
 # Symlink the cloned git repo to the usual location for Puppet to run
