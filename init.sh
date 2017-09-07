@@ -311,7 +311,9 @@ clone_git_repo() {
   then
     log_error "Failed to clone git@github.com:${FACTER_init_repouser}/${FACTER_init_reponame}.git"
   fi
-  chmod -R 700 ${FACTER_init_repodir}/puppet/hieradata || log_error "Failed to set permissions on ${FACTER_init_repodir}/puppet/hieradata"
+#  if [[ -z "${secure_puppet}" ]]; then
+    chmod -R 700 ${FACTER_init_repodir}/puppet || log_error "Failed to set permissions on ${FACTER_init_repodir}/puppet"
+#  fi
 }
 
 # Symlink the cloned git repo to the usual location for Puppet to run
